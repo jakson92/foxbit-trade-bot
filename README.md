@@ -1,5 +1,8 @@
 # Foxbit trade bot
 
+[![Build Status](https://travis-ci.org/khaleb85/foxbit-trade-bot.svg?branch=master)](https://travis-ci.org/khaleb85/foxbit-trade-bot)
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](LICENSE)
+
 **Project in development**
 
 The main idea of this project is give to users the possibility in create their 
