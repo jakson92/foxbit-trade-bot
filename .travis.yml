@@ -4,4 +4,6 @@ node_js:
   - "8"
 before_script:
   - npm install
-script: npm run check
+script: 
+  - npm run check
+  - npm run build

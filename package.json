@@ -8,7 +8,7 @@
     "test": "npm run build && mocha lib/test/**/**.spec.js",
     "check": "npm run lint && npm run test",
     "build": "babel . --ignore node_modules,dist,lib -d ./lib",
-    "build:prod": "babel . --ignore node_modules,lib --out-dir dist --presets minify",
+    "build:prod": "babel . --ignore node_modules,dist,lib -d ./dist --presets minify",
     "start": "npm run build && node lib/index.js",
     "start:prod": "node dist/index.js"
   },

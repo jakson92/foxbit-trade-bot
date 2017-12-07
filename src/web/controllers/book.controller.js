@@ -5,7 +5,16 @@ let foxbitApi;
 
 router.get('/', (req, res) => {
   foxbitApi.getFullOrderBook().then(x => {
-    res.send(x);
+    const responseAsks = [];
+    const responseBids = [];
+
+    x.asks.forEach(data => responseAsks.push({ price: data[0], amount: data[1], userId: data[2] }));
+    x.bids.forEach(data => responseBids.push({ price: data[0], amount: data[1], userId: data[2] }));
+
+    res.send({
+      asks: responseAsks,
+      bids: responseBids,
+    });
   });
 });
 
