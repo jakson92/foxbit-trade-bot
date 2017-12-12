@@ -5,7 +5,7 @@
 
 **Project in development**
 
-The main idea of this project is give to users the possibility in create their 
+The main idea of this project is give to the users the possibility in create their 
 own strategies to buy and sell bitcoins based on simple javascript events.
 
 ## Implemented features
@@ -19,7 +19,7 @@ This is the backend implementation with a webservice, if you want to use with a 
 
 ### Prerequisites
 
-This project is maded in NodeJS, and it's needed to run this project.
+This project is made with NodeJS, and it's needed to run this project.
 
 ### Installing
 
