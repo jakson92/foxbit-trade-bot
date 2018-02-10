@@ -1,14 +1,13 @@
-import FoxbitApi from '../core/market/foxbit';
 import Controllers from './controllers';
 
 class Web {
-  constructor(app) {
+  constructor(app, api) {
     this.app = app;
-    this.foxbitApi = new FoxbitApi();
+    this.api = api;
   }
 
   start() {
-    return new Controllers(this.app, this.foxbitApi);
+    return new Controllers(this.app, this.api);
   }
 }
 

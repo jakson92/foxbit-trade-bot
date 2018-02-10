@@ -1,4 +1,5 @@
 import * as BlinkTrade from 'blinktrade';
+
 import FoxbitConstants from '../../config/foxbitConstants';
 import Trade from './trade';
 

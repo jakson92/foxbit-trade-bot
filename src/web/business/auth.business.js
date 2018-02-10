@@ -8,6 +8,7 @@ class AuthBusiness {
     this.api.login(userData).then(x => {
       if (x.UserStatus !== 1) return { status: 'fail' };
 
+      this.api.emit('Logged');
       callBack({
         status: 'success',
         username: x.Username,

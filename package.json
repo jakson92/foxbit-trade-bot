@@ -18,7 +18,9 @@
     "blinktrade": "0.0.11",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "lodash": "^4.17.5",
     "moment": "^2.19.1",
+    "rethinkdb": "^2.3.3",
     "socket.io": "^2.0.4"
   },
   "devDependencies": {

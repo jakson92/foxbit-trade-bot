@@ -1,9 +1,11 @@
+import EventEmitter from 'events';
 import FoxbitConstants from '../../config/foxbitConstants';
 import EventInvalidError from '../errors/eventInvalidError';
 import Tools from '../tools/foxbitTools';
 
-class WebSocket {
+class WebSocket extends EventEmitter {
   constructor(ws) {
+    super();
     this.ws = ws;
   }
 
@@ -13,6 +15,20 @@ class WebSocket {
 
   getMyOrders() {
     return this.ws.myOrders();
+  }
+
+  onTicker(event, listener) {
+    const ticker = this.marketTicker || this._getTicker(event);
+
+    event.forEach(element => {
+      ticker.on(element, listener);
+    });
+  }
+
+  _getTicker(event) {
+    const ticker = this.marketTicker || this.ws.subscribeTicker(event);
+    this.marketTicker = ticker;
+    return ticker;
   }
 
   onExecutionReport(event, listener) {
