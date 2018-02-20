@@ -1,28 +1,21 @@
 import _ from 'lodash/array';
 import _math from 'lodash/math';
-import Operations from '../../database/operations';
-import Ticker from '../models/ticker';
+import Repository from '../repository/repository';
 import Candle from '../models/candle';
-import Debug from '../tools/Debug';
+import Ticker from '../models/ticker';
+import Debug from '../core/tools/Debug';
 
-class OrderWorker {
-  constructor(api) {
-    this.api = api;
-    this.db = new Operations();
+class Listener {
+  constructor() {
+    this.db = new Repository();
     this.tickers = [];
   }
 
-  storeMarketTicker() {
-    this.api.onTicker(['BLINK:BTCBRL'], x => {
-      this._verifyAndStoreTicks(x);
-    });
-  }
-
-  _verifyAndStoreTicks(tick) {
+  verifyAndStoreTicks(tick) {
     if (this.tickers.length > 0) {
       const firstItemDate = _.head(this.tickers).time;
       const dateNow = new Date();
-
+      console.log('batata');
       if (this._addMinutes(firstItemDate, 5) < dateNow) {
         Debug.log(`Candles store [${this.tickers.length}] ${dateNow.getHours()}:${dateNow.getMinutes()}:${dateNow.getSeconds()}`);
         this.db.insert('Candles', this._makeCandle(this.tickers));
@@ -49,4 +42,4 @@ class OrderWorker {
   }
 }
 
-export default OrderWorker;
+export default Listener;

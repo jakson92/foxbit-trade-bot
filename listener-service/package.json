@@ -1,0 +1,39 @@
+{
+  "name": "listener-service",
+  "version": "1.0.0",
+  "description": "A microservice that listen to foxbit and manage the data",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run build && mocha lib/test/**/**.spec.js",
+    "check": "npm run lint && npm run test",
+    "build": "babel . --ignore node_modules,dist,lib -d ./lib",
+    "build:prod": "babel . --ignore node_modules,dist,lib -d ./dist --presets minify",
+    "start": "npm run build && node lib/index.js",
+    "start:prod": "node dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "blinktrade": "0.0.19",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "lodash": "^4.17.5",
+    "rethinkdb": "^2.3.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.2.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.10.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-mocha": "^4.11.0",
+    "eslint-plugin-node": "^5.2.1",
+    "mocha": "^4.0.1",
+    "sinon": "^4.1.2"
+  }
+}

@@ -1,0 +1,10 @@
+export default Object.freeze({
+  PROD: true,
+  DEFAULT_SYMBOL: 'BTCBRL',
+  DEFAULT_CURRENCY: 'BRL',
+  BTC_CURRENCY: 'BTC',
+  DEFAULT_TICK: 'BLINK:BTCBRL',
+  BROKER_ID: 4,
+
+  HEARTH_BEAT_TIME: 25000,
+});
