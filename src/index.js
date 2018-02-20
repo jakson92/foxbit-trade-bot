@@ -14,7 +14,7 @@ class Server {
     this.web.start();
     const macd = new MacdStrategie();
 
-    macd.getCandles(5)
+    macd.getCandlesHistory(5)
       .then(x => Debug.log(x));
 
     this.api.on('Logged', () => {
