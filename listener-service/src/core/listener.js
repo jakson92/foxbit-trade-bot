@@ -1,6 +1,6 @@
 import _ from 'lodash/array';
 import _math from 'lodash/math';
-import Repository from '../repository/repository';
+import Repository from '../repositories/repository';
 import Candle from '../models/candle';
 import Ticker from '../models/ticker';
 import Debug from '../core/tools/Debug';
@@ -15,7 +15,7 @@ class Listener {
     if (this.tickers.length > 0) {
       const firstItemDate = _.head(this.tickers).time;
       const dateNow = new Date();
-      console.log('batata');
+
       if (this._addMinutes(firstItemDate, 5) < dateNow) {
         Debug.log(`Candles store [${this.tickers.length}] ${dateNow.getHours()}:${dateNow.getMinutes()}:${dateNow.getSeconds()}`);
         this.db.insert('Candles', this._makeCandle(this.tickers));

@@ -18,7 +18,10 @@ router.post('/start', (req, res) => {
       listener.verifyAndStoreTicks(y);
     });
 
-    res.json(x);
+    res.json({
+      status: 'success',
+      username: x.Username,
+    });
   });
 });
 
