@@ -1,11 +1,8 @@
-import BodyParser from 'body-parser';
 import listenController from './listen.controller';
 
 class Controllers {
-  constructor(app, foxbitApi, listener) {
-    app.use(BodyParser.json());
-
-    app.use('/', listenController(foxbitApi, listener));
+  constructor(app) {
+    app.use('/', listenController);
   }
 }
 export default Controllers;

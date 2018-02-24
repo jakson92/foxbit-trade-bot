@@ -1,8 +1,7 @@
 import express from 'express';
+import EmiterService from '../../services/emiter.service';
 
 const router = new express.Router();
-let foxbitApi;
-let listener;
 
 router.post('/start', (req, res) => {
   if (!req.body || !req.body.username || !req.body.password) return res.sendStatus(400);
@@ -13,20 +12,17 @@ router.post('/start', (req, res) => {
     secondFactor: req.body.secondFactor,
   };
 
-  foxbitApi.login(loginData).then(x => {
-    foxbitApi.onTicker(['BLINK:BTCBRL'], y => {
-      listener.verifyAndStoreTicks(y);
-    });
-
+  const emiter = new EmiterService();
+  emiter.startTickerListen(loginData).then(x => {
     res.json({
       status: 'success',
       username: x.Username,
     });
+  }).catch(() => {
+    res.json({
+      status: 'failed',
+    });
   });
 });
 
-module.exports = (_foxbitApi, _listener) => {
-  foxbitApi = _foxbitApi;
-  listener = _listener;
-  return router;
-};
+module.exports = router;

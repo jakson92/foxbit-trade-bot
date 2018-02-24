@@ -1,0 +1,11 @@
+# Dependencies
+node_modules/
+lib/
+dist/
+.vscode/
+
+# Listener Service
+listener-service/lib/
+listener-service/dist/
+listener-service/node_modules/
+listener-service/.vscode

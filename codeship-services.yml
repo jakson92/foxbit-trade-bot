@@ -1,0 +1,8 @@
+listener-service:
+  build: ./listener-service/
+  depends_on:
+    - rethinkdb
+rethinkdb:
+  image: healthcheck/rethinkdb:2.3.6
+candle-service:
+  image: ./candle-service

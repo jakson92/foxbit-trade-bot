@@ -2,9 +2,9 @@ FROM node:9.5.0-alpine
 
 COPY . /app
 
-RUN cd app && npm install --silent --progress=false --production
-
 WORKDIR /app
+
+RUN npm install --silent --progress=false --production
 
 CMD ["npm", "start"]
 

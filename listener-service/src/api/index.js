@@ -1,10 +1,12 @@
 import Controllers from './controllers/index';
-import Listener from '../core/listener';
 
 class Api {
-  constructor(app, foxbitApi) {
-    const listener = new Listener();
-    this.controllers = new Controllers(app, foxbitApi, listener);
+  constructor(app) {
+    this.app = app;
+  }
+
+  start() {
+    this.controllers = new Controllers(this.app);
   }
 }
 
