@@ -1,8 +1,8 @@
-import listenController from './listen.controller';
+import ListenController from './listen.controller';
 
 class Controllers {
   constructor(app) {
-    app.use('/', listenController);
+    app.use('/', ListenController);
   }
 }
 export default Controllers;

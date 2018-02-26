@@ -1,6 +1,6 @@
 import CandleService from '../../services/candle.service';
 
-class CandleListener {
+class Listener {
   constructor() {
     this.candleService = new CandleService();
   }
@@ -12,4 +12,4 @@ class CandleListener {
   }
 }
 
-export default CandleListener;
+export default Listener;
