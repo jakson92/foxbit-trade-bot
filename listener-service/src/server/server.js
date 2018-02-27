@@ -4,10 +4,16 @@ import Debug from '../tools/Debug';
 import Api from '../api';
 
 class Server {
+  /**
+   * @constructor
+   */
   constructor() {
     this.port = process.env.port || 3000;
   }
 
+  /**
+   * Start the express server with all middlewares.
+   */
   start() {
     const app = express();
 

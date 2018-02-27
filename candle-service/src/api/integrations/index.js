@@ -4,6 +4,10 @@ import Listener from './listener.integration';
 import Prediction from './prediction.integration';
 
 class Integrations {
+  /**
+   * Start Websocket with Listener service,
+   * and start all others integrations.
+   */
   start() {
     const socket = io(Endpoints.LISTENER_URL);
 

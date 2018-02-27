@@ -3,10 +3,18 @@ import Repository from '../repository';
 import Debug from '../../tools/Debug';
 
 class FoxbitMigration {
+  /**
+   * @constructor
+   */
   constructor() {
     this.repository = new Repository();
   }
 
+  /**
+   * Create a database with the name passed as param.
+   *
+   * @param  {string} dbName
+   */
   createDatabase(dbName) {
     return this.repository.openDbConnection().then(conn => {
       r.dbList().run(conn).then(dbs => {
@@ -18,6 +26,12 @@ class FoxbitMigration {
     });
   }
 
+  /**
+   * Create a table in database passed as param,
+   *
+   * @param  {string} database
+   * @param  {string} tableName
+   */
   createTable(database, tableName) {
     return this.repository.openDbConnection().then(conn => {
       r.db(database).tableList().run(conn).then(tbs => {

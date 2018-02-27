@@ -5,11 +5,21 @@ import Candle from '../models/candle';
 import Debug from '../tools/Debug';
 
 class CandleService {
+  /**
+   * @constructor
+   */
   constructor() {
     this.db = new Repository();
     this.tickers = [];
   }
 
+  /**
+   * Verify if is a valid Tick, store the tick in memory,
+   * and in every X minutes make a candle object with all tickers
+   * then insert in database.
+   *
+   * @param  {Ticker} tick
+   */
   verifyAndStoreTicks(tick) {
     if (this.tickers.length > 0) {
       const firstItemDate = _.head(this.tickers).time;
@@ -25,11 +35,22 @@ class CandleService {
     this.tickers.push(tick);
   }
 
+  /**
+   * Add minutes to a date.
+   *
+   * @param  {Date} date
+   * @param  {number} minutes
+   */
   _addMinutes(date, minutes) {
     const dateToChange = new Date(date);
     return new Date(dateToChange.setMinutes(dateToChange.getMinutes() + minutes));
   }
 
+  /**
+   * Make a Candle (high, low, open, close) object with tickers data.
+   *
+   * @param  {Ticker[]} tickers
+   */
   _makeCandle(tickers) {
     if (tickers.length <= 0) return;
 

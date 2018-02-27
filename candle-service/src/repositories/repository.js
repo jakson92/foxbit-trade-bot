@@ -2,10 +2,20 @@ import r from 'rethinkdb';
 import Database from '../../config/database';
 
 class Repository {
+  /**
+   * Open connection with database.
+   */
   openDbConnection() {
     return r.connect(Database.connection);
   }
 
+  /**
+   * Returns last candles limited by quantity.
+   *
+   * @param  {string} table
+   * @param  {number} qnt
+   * @param  {function} callBack
+   */
   getCandlesByTime(table, qnt, callBack) {
     return this.openDbConnection().then(conn => {
       r.table(table)
@@ -15,6 +25,16 @@ class Repository {
     });
   }
 
+  /**
+   * On a data inserted in the database,
+   * callback will be called with the new data passed as param.
+   *
+   * Can filter data with a function.
+   *
+   * @param  {string} table
+   * @param  {function} filter
+   * @param  {function} callBack
+   */
   onInsert(table, filter, callBack) {
     this.openDbConnection().then(conn => {
       const changes = r.table(table).changes();
@@ -37,6 +57,12 @@ class Repository {
     });
   }
 
+  /**
+   * Insert a json in a table.
+   *
+   * @param  {string} table
+   * @param  {json} item
+   */
   insert(table, item) {
     this.openDbConnection().then(conn => {
       r.table(table)
