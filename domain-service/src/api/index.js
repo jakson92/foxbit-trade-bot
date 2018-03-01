@@ -1,4 +1,5 @@
 import Integrations from './integrations';
+import Controllers from './controllers';
 
 class Api {
   /**
@@ -15,6 +16,9 @@ class Api {
   start() {
     const integrations = new Integrations();
     integrations.start();
+
+    const controllers = new Controllers(this.app);
+    controllers.start();
   }
 }
 
